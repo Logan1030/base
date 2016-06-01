@@ -16,6 +16,7 @@ import redis.clients.jedis.JedisCluster;
 public class JedisClusterFactory implements FactoryBean<JedisCluster>, InitializingBean {
 	//http://xyqck163.iteye.com/blog/2211108
 	//http://my.oschina.net/zhuguowei/blog/411077
+	//http://www.jianshu.com/p/22af55518f6d
 	private Resource addressConfig;
 	private String addressKeyPrefix ;
 	private JedisCluster jedisCluster;
@@ -54,7 +55,7 @@ public class JedisClusterFactory implements FactoryBean<JedisCluster>, Initializ
 				}
 
 				String val = (String) prop.get(key);
-
+                System.out.println("val:====" +val);
 				boolean isIpPort = p.matcher(val).matches();
 
 				if (!isIpPort) {
