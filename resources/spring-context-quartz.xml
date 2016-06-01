@@ -9,8 +9,8 @@
 	<bean name="quartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
 			<list>
- 				<!-- 自动投定期宝定时任务 -->
- 				<ref bean="autoTenderFixHanlderTime"/>
+ 				<!-- 自动投定期宝定时任务 
+ 				<ref bean="autoTenderFixHanlderTime"/>-->
 			</list>
 		</property>
 		<property name="configLocation" value="classpath:/quartz.properties"/>

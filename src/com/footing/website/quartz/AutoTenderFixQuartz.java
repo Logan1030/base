@@ -19,7 +19,6 @@ public class AutoTenderFixQuartz {
 	private  static final Logger logger=Logger.getLogger(AutoTenderFixQuartz.class);
     
 	public void doAutoTenderFix(){
-		logger.info(DateUtils.getDateTime());
-		logger.info("定时任务测试推送"+AutoTenderFixQuartz.class.toString());
+		 
 	}
 }

@@ -14,7 +14,7 @@ public class RedisClusterTest extends SpringTransactionalContextTests{
 			System.out.println("====================================");
 			System.out.println("jedis:"+jedisCluster);
 			System.out.println(jedisCluster.setnx("yubin", "yubin"));
-			System.out.println(jedisCluster.info());
+			System.out.println(jedisCluster.getClusterNodes());
 			System.out.println(jedisCluster.get("yubin"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
