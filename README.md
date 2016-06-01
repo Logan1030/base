@@ -1,4 +1,4 @@
-hsbank_cms
+hsbank_base
 ===============
 
-花生金服_后台_内容管理
+springmvc+batis+nignx+redis-cluster集群框架
