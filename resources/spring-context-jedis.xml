@@ -28,7 +28,7 @@
             <property name="maxIdle" value="100" />  
     </bean>  
       
-    <bean id="jedisCluster" class="xxx.JedisClusterFactory">  
+    <bean id="jedisCluster" class="com.footing.website.common.utils.JedisClusterFactory">  
         <property name="addressConfig">  
             <value>classpath:connect-redis.properties</value>  
         </property>  
