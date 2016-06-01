@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<!-- 定时调度任务触发列表-->
+	<bean name="quartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+ 				<!-- 自动投定期宝定时任务 -->
+ 				<ref bean="autoTenderFixHanlderTime"/>
+			</list>
+		</property>
+		<property name="configLocation" value="classpath:/quartz.properties"/>
+	</bean> 
+    <!-- 每两分钟推送任务 -->
+	<bean id="autoTenderFixQuartz" class="com.footing.website.quartz.AutoTenderFixQuartz"></bean>
+	<bean id="autoTenderFixHanlderTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	   <!-- 调用的类 -->  
+		<property name="targetObject">  
+			<ref bean="autoTenderFixQuartz" />  
+		</property>  
+		<!-- 调用类中的方法 -->  
+		<property name="targetMethod">  
+			<value>doAutoTenderFix</value>
+		</property>  
+	</bean>
+    <bean id="autoTenderFixHanlderTime" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+       <property name="jobDetail">
+           <ref bean="autoTenderFixHanlderTask"/>
+       </property>
+       <property name="cronExpression">
+           <value>0 */1 * * * ?</value>
+       </property>
+    </bean>
+</beans>
