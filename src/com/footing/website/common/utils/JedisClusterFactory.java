@@ -14,18 +14,16 @@ import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.JedisCluster;
 
 public class JedisClusterFactory implements FactoryBean<JedisCluster>, InitializingBean {
-
+	//http://xyqck163.iteye.com/blog/2211108
+	//http://my.oschina.net/zhuguowei/blog/411077
 	private Resource addressConfig;
 	private String addressKeyPrefix ;
-
 	private JedisCluster jedisCluster;
 	private Integer timeout;
 	private Integer maxRedirections;
 	private GenericObjectPoolConfig genericObjectPoolConfig;
 	
 	private Pattern p = Pattern.compile("^.+[:]\\d{1,5}\\s*$");
-    //http://xyqck163.iteye.com/blog/2211108
-	//http://my.oschina.net/zhuguowei/blog/411077
 	@Override
 	public JedisCluster getObject() throws Exception {
 		return jedisCluster;
