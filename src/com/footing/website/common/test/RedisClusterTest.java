@@ -33,9 +33,9 @@ public class RedisClusterTest extends SpringTransactionalContextTests{
 	@Test 
 	public  void cluster(){
 		System.out.println("cluster");
-		for(int i=0;i<100;i++){
+		for(int i=0;i<10;i++){
 			 
-		    String key = "1417"+i;
+		    String key = "11417"+i;
 		    jc.setnx(key, "bar");
 		    String value = jc.get(key);
 		    System.out.println("key-"+key+" slot-"+JedisClusterCRC16.getSlot(key)+" value-"+value);
