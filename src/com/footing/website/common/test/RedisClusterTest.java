@@ -46,22 +46,19 @@ public class RedisClusterTest extends SpringTransactionalContextTests{
 		    System.out.println("key-"+key2+" slot-"+JedisClusterCRC16.getSlot(key2)+" value-"+value2);
 		}
 	}
-	 
+	@Test 
 	public void app(){
-		jc.set("foo", "jedis test");
-        String value = jc.get("foo");
-        System.out.println("foo = " + value);
         // get cluster nodes
         System.out.println("------- cluster nodes --------");
         Map<String, JedisPool> nodes = jc.getClusterNodes();
         Iterator<Map.Entry<String, JedisPool>> iterNodes = nodes.entrySet().iterator();
         while (iterNodes.hasNext()) {
-        	System.out.println("==========");
             Map.Entry<String, JedisPool> entry = iterNodes.next();
             Jedis jedis = entry.getValue().getResource();
-            System.out.println("============");
+          
             System.out.println(entry.getKey() + "\n" + jedis.info()+"\n"+jedis.clientList());
         }
+        System.out.println("------- cluster nodes --------");
         System.out.println("------- pub/sub --------");
         // 这里随机取了两个分别用于 publish 和 subscribe 的 jedis 连接
         // Redis 不支持在同一个连接上既作为 publisher 又作为 subscriber
